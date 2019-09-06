@@ -1,27 +1,19 @@
 const mysqlServer = require('mysql')
+
 const connection = mysqlServer.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123456',
+    password: 'admin',
     database: 'restful_ws'
 })
 
-// const categories = connection.query('SELECT * FROM CATEGORIES', (error, results) => {
-//     if (error) {
+const errorHandler = (error, msg, rejectFunction) => {
+    console.error(error)
+    rejectFunction({ error: msg })
+}
 
-//     }
-//     return { categories: results }
-// })
+const categoryModule = require('./categories')({ connection, errorHandler })
 
-const categories = new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM CATEGORIES', (error, results) => {
-        if (error) {
-            reject(error)
-        }
-        resolve({ categories: results })
-    })
-
-})
-
-
-module.exports = categories
+module.exports = {
+    categories: () => categoryModule
+}
