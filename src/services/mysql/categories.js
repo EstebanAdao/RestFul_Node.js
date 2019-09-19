@@ -20,7 +20,7 @@ const categories = deps => {
                         errorHandler(error, `Falha ao salvar a categoria ${name}`, reject)
                         return false
                     }
-                    resolve({ category: results.insertId })
+                    resolve({ category: { name, id: results.insertId } })
                 })
             })
         },
