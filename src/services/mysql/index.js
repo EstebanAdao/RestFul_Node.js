@@ -7,6 +7,7 @@ const connection = mysqlServer.createConnection({
     database: process.env.MYSQL_DATABASE
 })
 
+
 const errorHandler = (error, msg, rejectFunction) => {
     console.error(error)
     rejectFunction({ error: msg })
