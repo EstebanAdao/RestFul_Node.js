@@ -1,0 +1,4 @@
+Pagina para gerar os hash jwt --> http://www.sha1-online.com/
+Pagina para verificar que o token ta valido
+
+npx ava nomearquivo teste unitario
