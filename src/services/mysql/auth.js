@@ -9,9 +9,8 @@ const auth = deps => {
                 const queryString = 'SELECT id, email FROM users WHERE email = ? AND password = ?'
                 const queryData = [email, sha1(password)]
                 connection.query(queryString, queryData, (error, results) => {
-                    // console.log("Error", results)
                     if (error || !results.length) {
-                         errorHandler(error, "Falha ao localizar o usuario", reject)
+                        errorHandler(error, "Falha ao localizar o usuario", reject)
                         return false
                     }
                     const { email, id } = results[0]
