@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-
+//Passar no header [x-access-token] : 'Token'
 const jwtMiddleware = (deps) => {
     return async (req, res, next) => {
         if (!deps.exclusions.includes(req.href())) {
